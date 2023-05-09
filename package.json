@@ -1,0 +1,32 @@
+{
+  "name": "Agora-B",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Cesar-M-Diaz/Agora-B.git",
+  "author": "Cesar-M-Diaz <arq.cmdiaz1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@sendgrid/mail": "^7.4.7",
+    "bcrypt": "^5.0.1",
+    "cloudinary": "^1.27.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "epayco-sdk-node": "^1.0.8",
+    "express": "^4.17.1",
+    "express-busboy": "^8.0.0",
+    "jest": "^27.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.5",
+    "nodemon": "^2.0.12",
+    "stripe": "^12.4.0",
+    "supertest": "^6.1.6"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "nodemon": "nodemon server.js"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
+}

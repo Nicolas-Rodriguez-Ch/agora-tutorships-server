@@ -1,0 +1,61 @@
+[{
+  "_id": {
+    "$oid": "616856291df12f3fa6735538"
+  },
+  "subject": "Math",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168562a1df12f3fa673553a"
+  },
+  "subject": "Chemistry",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168562a1df12f3fa673553c"
+  },
+  "subject": "Biology",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168562a1df12f3fa673553e"
+  },
+  "subject": "Physics",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168562a1df12f3fa6735540"
+  },
+  "subject": "Development",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168562a1df12f3fa6735542"
+  },
+  "subject": "Psychology",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168562a1df12f3fa6735544"
+  },
+  "subject": "Health & Fitness",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168562a1df12f3fa6735546"
+  },
+  "subject": "Productivity",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168562a1df12f3fa6735548"
+  },
+  "subject": "Marketing",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6168562a1df12f3fa673554a"
+  },
+  "subject": "Graphic design",
+  "__v": 0
+}]
