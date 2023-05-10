@@ -9,6 +9,7 @@ const getTutors = async (req, res) => {
       'profession',
       'focus',
       'rating',
+      'price',
       'description',
     ])
       .sort({ rating: -1 })

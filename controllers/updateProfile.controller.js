@@ -6,7 +6,7 @@ const Tutor = require('../models/tutor.model');
 
 const updateProfile = async (req, res, next) => {
   try {
-    const { name, email, password, description, schedule } = req.body.inputs;
+    const { name, email, password, description, schedule, price } = req.body.inputs;
     const { url, token, type } = req.body;
     const userSchema = type === 'student' ? Student : Tutor;
     const userExists = await userSchema.findOne({ email });
@@ -25,6 +25,7 @@ const updateProfile = async (req, res, next) => {
           profile_photo: url || userData.profile_photo,
           description: description || userData.description,
           schedule: schedule || userData.schedule,
+          price: price || userData.price
         },
       );
       const newUserData = await userSchema.findOne({ _id: userData._id });
