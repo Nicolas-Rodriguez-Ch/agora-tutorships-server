@@ -54,9 +54,12 @@ const createTutorship = async (req, res, next) => {
       });
       next();
     } else {
+
       res.status(400).json({ message: "Student email not found" });
     }
   } catch (err) {
+    console.log("🚀 ~ file: tutorship.controller.js:62 ~ createTutorship ~ err:", err)
+    
     res.status(400).json(err);
   }
 };

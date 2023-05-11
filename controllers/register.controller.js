@@ -3,6 +3,7 @@ const Student = require('../models/student.model');
 const jwt = require('jsonwebtoken');
 const sendEmail = require('../utils/sendEmail')
 require('dotenv').config({path: '../.env'})
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 
 const createUser = async (req, res) => {
@@ -11,6 +12,15 @@ const createUser = async (req, res) => {
 
     let userSchema = '';
     userSchema = type === 'student' ? Student : Tutor;
+
+    let stripeCustomer = null;
+    if (type === 'student') {
+      stripeCustomer = await stripe.customers.create({
+        name: inputs.name,
+        email: inputs.email
+      });
+      inputs.stripe_customer_id = stripeCustomer.id;
+    }
 
     const user = await new userSchema(inputs);
     await user.save();
@@ -36,6 +46,7 @@ const createUser = async (req, res) => {
     
     
   } catch (err) {
+    console.log("🚀 ~ file: register.controller.js:48 ~ createUser ~ err:", err)
     res.status(400).json('Error: ' + err);
   }
 
