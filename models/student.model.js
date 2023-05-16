@@ -22,10 +22,10 @@ const studentSchema = mongoose.Schema(
       required: true,
     },
     profile_photo: String,
-    epayco_customer_id: {
+    type: {
       type: String,
-      default: '',
-    },
+      default: 'student'
+    }
   },
   {
     timestamps: true,
