@@ -12,7 +12,7 @@ const studentSchema = mongoose.Schema(
         validator: async function (value) {
           const student = await Student.findOne({ email: value });
           const tutor = await mongoose.model('Tutor').findOne({ email: value });
-          if (student || tutor) return false;
+          return !(student || tutor);
         },
         message: 'Duplicated Email',
       },
@@ -22,6 +22,10 @@ const studentSchema = mongoose.Schema(
       required: true,
     },
     profile_photo: String,
+    stripe_customer_id: {
+      type: String,
+      default: '',
+    },
     type: {
       type: String,
       default: 'student'

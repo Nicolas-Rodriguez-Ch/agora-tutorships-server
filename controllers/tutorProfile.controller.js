@@ -13,6 +13,7 @@ const getTutorData = async (req, res) => {
       focus,
       price,
       rating,
+      price
     } = tutor;
     const reviews = await Review.find({ tutor_id: req.params.id }).populate(
       "student_id",
@@ -28,6 +29,7 @@ const getTutorData = async (req, res) => {
       price,
       rating,
       reviews,
+      price
     };
     res.status(200).json(tutorData);
   } catch (error) {
