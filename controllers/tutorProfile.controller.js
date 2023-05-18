@@ -1,5 +1,5 @@
-const Tutor = require('../models/tutor.model');
-const Review = require('../models/review.model');
+const Tutor = require("../models/tutor.model");
+const Review = require("../models/review.model");
 
 const getTutorData = async (req, res) => {
   try {
@@ -11,11 +11,12 @@ const getTutorData = async (req, res) => {
       description,
       profession,
       focus,
+      price,
       rating,
     } = tutor;
     const reviews = await Review.find({ tutor_id: req.params.id }).populate(
-      'student_id',
-      'name',
+      "student_id",
+      "name"
     );
     const tutorData = {
       name,
@@ -24,6 +25,7 @@ const getTutorData = async (req, res) => {
       description,
       profession,
       focus,
+      price,
       rating,
       reviews,
     };

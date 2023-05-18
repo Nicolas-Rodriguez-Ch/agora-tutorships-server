@@ -4,6 +4,7 @@ const Tutorship = require("../models/tutorship.model");
 const sendEmail = require("../utils/sendEmail");
 
 const createTutorship = async (req, res, next) => {
+  console.log("🚀 ~ file: tutorship.controller.js:13 ~ createTutorship ~ req.body.student:", req.body)
   try {
     const {
       email: studentMail,
@@ -57,6 +58,7 @@ const createTutorship = async (req, res, next) => {
       res.status(400).json({ message: "Student email not found" });
     }
   } catch (err) {
+    console.log("🚀 ~ file: tutorship.controller.js:60 ~ createTutorship ~ err:", err)
     res.status(400).json(err);
   }
 };

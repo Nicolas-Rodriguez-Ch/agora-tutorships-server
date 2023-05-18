@@ -8,7 +8,7 @@ const logger = async (req, res, next) => {
         const userAuth = await Student.authenticate(email, password) || await Tutor.authenticate(email, password);
         let user = null;
         if (userAuth) {
-            const token = jwt.sign({ exp: Math.floor(Date.now() / 1000) + 15 * 24 * 60 * 60, userId: userAuth._id, type: `${userAuth.focus ? "tutor" : "student"}`, userData: userAuth }, 'secret key');
+            const token = jwt.sign({ exp: Math.floor(Date.now() / 1000) + 15 * 24 * 60 * 60, userId: userAuth._id, type: userAuth.type ? userAuth.type: 'tutor' , userData: userAuth }, 'secret key');
             user = { token, userData: userAuth };
         } else {
             res.status(404).send('Not found');
