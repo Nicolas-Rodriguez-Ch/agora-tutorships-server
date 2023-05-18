@@ -7,7 +7,7 @@ const findTutors = async (req, res) => {
     const page = req.params.page || 1
     const count = await Tutor.count({focus: req.params.focus})
     const data = await Tutor.find({focus: req.params.focus},
-      ['name', 'profile_photo', 'profession', 'focus', 'rating', 'description'])
+      ['name', 'profile_photo', 'profession', 'focus', 'rating', 'description', 'price'])
       .sort({rating: -1})
       .skip((page-1)*9)
       .limit(9)
