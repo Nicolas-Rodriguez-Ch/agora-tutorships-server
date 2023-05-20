@@ -4,7 +4,6 @@ const Tutorship = require("../models/tutorship.model");
 const sendEmail = require("../utils/sendEmail");
 
 const createTutorship = async (req, res, next) => {
-  console.log("🚀 ~ file: tutorship.controller.js:13 ~ createTutorship ~ req.body.student:", req.body)
   try {
     const {
       email: studentMail,
@@ -13,7 +12,6 @@ const createTutorship = async (req, res, next) => {
     } = req.body.student;
     const { name: tutorName, email: tutorEmail } = req.body.tutor;
 
-
     const { date, time } = req.body.inputs;
 
     const student = await Student.findOne({ studentMail });
@@ -21,7 +19,7 @@ const createTutorship = async (req, res, next) => {
       const newDate = `${date}T${time}:00.000z`;
       const tutor = await Tutor.findOne({ tutorEmail });
       const { _id: tutor_id } = tutor;
-      
+
       const tutorship = await Tutorship.create({
         student_id,
         date: newDate,
@@ -55,13 +53,9 @@ const createTutorship = async (req, res, next) => {
       });
       next();
     } else {
-
       res.status(400).json({ message: "Student email not found" });
     }
   } catch (err) {
-    console.log("🚀 ~ file: tutorship.controller.js:60 ~ createTutorship ~ err:", err)
-    console.log("🚀 ~ file: tutorship.controller.js:62 ~ createTutorship ~ err:", err)
-    
     res.status(400).json(err);
   }
 };
@@ -84,4 +78,21 @@ const getTutorships = async (req, res, next) => {
   }
 };
 
-module.exports = { createTutorship, getTutorships };
+const getTutorship = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const tutorship = await Tutorship.findOne({ _id: id })
+      .populate("tutor_id")
+      .populate("student_id")
+      .exec();
+    if (!tutorship) {
+      return res.status(404).json({ message: "Tutorship not found" });
+    }
+    res.status(200).json(tutorship);
+    next();
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+module.exports = { createTutorship, getTutorships, getTutorship };

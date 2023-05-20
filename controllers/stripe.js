@@ -5,7 +5,7 @@ const stripe = new Stripe(STRIPE_SECRET_KEY, {
   apiVersion: "2022-11-15",
 });
 
-const handleCheckout = async (req, res) => {
+const handleCheckout = async (req) => {
   const { paymentMethod, amount, address, city } = req.body;
 
   try {
@@ -18,9 +18,10 @@ const handleCheckout = async (req, res) => {
       description: "",
     });
 
-    return res.status(201).json({ message: "success", payment, address, city });
+    return { message: "success", payment, address, city };
   } catch (error) {
-    return res.status(500).json(error);
+    console.error("🚀 ~ file: stripe.js:23 ~ handleCheckout ~ error:", error);
+    throw error;
   }
 };
 
