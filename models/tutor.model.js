@@ -26,6 +26,10 @@ const tutorSchema = mongoose.Schema(
       type: String,
       default: 'from mondays to fridays, from 8:30am to 5:00pm',
     },
+    type: {
+      type: String,
+      default: 'tutor'
+    },
     profile_photo: String,
     description: String,
     profession: String,
@@ -33,6 +37,7 @@ const tutorSchema = mongoose.Schema(
     rating: Number,
     price: Number
   },
+  
   {
     timestamps: true,
   },
