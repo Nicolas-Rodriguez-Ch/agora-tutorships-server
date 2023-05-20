@@ -41,7 +41,6 @@ async function payment(req, res) {
     });
 
     const payment = await newPayment.save();
-    console.log("🚀 ~ file: payments.controller.js:44 ~ payment ~ payment:", payment)
 
     // Update the status of the tutorship
     tutorship.status = "accepted";
@@ -49,7 +48,7 @@ async function payment(req, res) {
 
     res.status(201).json({ payment, tutorship, message: paymentResponse.message, address: paymentResponse.address, city: paymentResponse.city });
   } catch (error) {
-    console.error(error); // log the error
+    console.error(error);
     res.status(500).send(error.message);
   }
 }

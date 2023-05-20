@@ -46,7 +46,6 @@ const createUser = async (req, res) => {
     
     
   } catch (err) {
-    console.log("🚀 ~ file: register.controller.js:48 ~ createUser ~ err:", err)
     res.status(400).json('Error: ' + err);
   }
 

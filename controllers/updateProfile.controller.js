@@ -46,6 +46,7 @@ const updateProfile = async (req, res, next) => {
     );
     res.json(newToken);
   } catch (error) {
+    console.log("🚀 ~ file: updateProfile.controller.js:49 ~ updateProfile ~ error:", error)
     res.status(500).send(error);
   }
 };
