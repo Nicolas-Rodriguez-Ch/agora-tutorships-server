@@ -51,8 +51,12 @@ const updateProfile = async (req, res, next) => {
 };
 
 const updateProfileImage = async (req, res, next) => {
-  console.log("🚀 ~ file: updateProfile.controller.js:54 ~ updateProfileImage ~ req:", req.file.path)
   try {
+    if (!req.file) {
+      next();
+      return;
+    }
+        
     cloudinary.uploader.upload(req.file.path, (error, result) => {
       if (error) {
         return next();
@@ -61,8 +65,10 @@ const updateProfileImage = async (req, res, next) => {
       res.status(200).send(url);
     });
   } catch (error) {    
+    console.log("🚀 ~ file: updateProfile.controller.js:68 ~ updateProfileImage ~ error:", error);
     res.status(500).send(null);
   }
 };
+
 
 module.exports = { updateProfile, updateProfileImage };

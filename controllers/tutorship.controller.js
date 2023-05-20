@@ -14,10 +14,10 @@ const createTutorship = async (req, res, next) => {
 
     const { date, time } = req.body.inputs;
 
-    const student = await Student.findOne({ studentMail });
+    const student = await Student.findOne({ email: studentMail });
     if (student) {
       const newDate = `${date}T${time}:00.000z`;
-      const tutor = await Tutor.findOne({ tutorEmail });
+      const tutor = await Tutor.findOne({ email: tutorEmail });
       const { _id: tutor_id } = tutor;
 
       const tutorship = await Tutorship.create({
