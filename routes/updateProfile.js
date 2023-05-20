@@ -1,18 +1,16 @@
-const express = require('express');
-const bb = require('express-busboy')
-const Controller = require('../controllers/updateProfile.controller');
+const express = require("express");
+const multer = require("multer");
+const Controller = require("../controllers/updateProfile.controller");
 
 const app = express.Router();
+const upload = multer({ dest: "uploads/" });
 
-app.patch('/update', Controller.updateProfile)
+app.patch("/update", Controller.updateProfile);
 
-
-bb.extend(app, {
-  upload: true,
-  path: 'uploads',
-  allowedPath: /./
-});
-
-app.patch('/uploadProfileImage', Controller.updateProfileImage)
+app.patch(
+  "/uploadProfileImage",
+  upload.single("image"),
+  Controller.updateProfileImage
+);
 
 module.exports = app;

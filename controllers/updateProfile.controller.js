@@ -46,23 +46,29 @@ const updateProfile = async (req, res, next) => {
     );
     res.json(newToken);
   } catch (error) {
-    console.log("🚀 ~ file: updateProfile.controller.js:49 ~ updateProfile ~ error:", error)
     res.status(500).send(error);
   }
 };
 
 const updateProfileImage = async (req, res, next) => {
   try {
-    cloudinary.uploader.upload(req.files.image.file, (error, result) => {
+    if (!req.file) {
+      next();
+      return;
+    }
+        
+    cloudinary.uploader.upload(req.file.path, (error, result) => {
       if (error) {
         return next();
       }
       const url = result.url;
       res.status(200).send(url);
     });
-  } catch (error) {
-    res.status(200).send(null);
+  } catch (error) {    
+    console.log("🚀 ~ file: updateProfile.controller.js:68 ~ updateProfileImage ~ error:", error);
+    res.status(500).send(null);
   }
 };
+
 
 module.exports = { updateProfile, updateProfileImage };
