@@ -1,4 +1,4 @@
-# Agora
+# Agora Tutorships v2.0
 
 Agora-B is a back-end server application built with Node.js and Express. This project was previously using Epayco for payment processing and Busboy for file uploading, both of which have been migrated to Stripe and Multer respectively. The database models for MongoDB Atlas have been refactored for better functionality. Additionally, Morgan development middleware has been added for improved development experience.
 
@@ -27,15 +27,17 @@ To get started with this project:
 
 Open the `.env` file and add the following (replace the values with your own):
 
-PORT=3001
-SECRET_KEY=your_secret_key
-SENDGRID_API_KEY=your_sendgrid_api_key
-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-STRIPE_SECRET_KEY=your_stripe_secret_key
-ATLAS_URI=your_atlas_uri
-CLOUDINARY_URL=your_cloudinary_url
+## Envioroment variables
+
+-PORT=3001
+-SECRET_KEY=your_secret_key
+-SENDGRID_API_KEY=your_sendgrid_api_key
+-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+-CLOUDINARY_API_KEY=your_cloudinary_api_key
+-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+-STRIPE_SECRET_KEY=your_stripe_secret_key
+-ATLAS_URI=your_atlas_uri
+-CLOUDINARY_URL=your_cloudinary_url
 
 5. **Run the application**:
    In development mode: npm run nodemon
