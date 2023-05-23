@@ -29,15 +29,15 @@ Open the `.env` file and add the following (replace the values with your own):
 
 ## Envioroment variables
 
--PORT=3001
--SECRET_KEY=your_secret_key
--SENDGRID_API_KEY=your_sendgrid_api_key
--CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
--CLOUDINARY_API_KEY=your_cloudinary_api_key
--CLOUDINARY_API_SECRET=your_cloudinary_api_secret
--STRIPE_SECRET_KEY=your_stripe_secret_key
--ATLAS_URI=your_atlas_uri
--CLOUDINARY_URL=your_cloudinary_url
+- PORT=3001
+- SECRET_KEY=your_secret_key
+- SENDGRID_API_KEY=your_sendgrid_api_key
+- CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+- CLOUDINARY_API_KEY=your_cloudinary_api_key
+- CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+- STRIPE_SECRET_KEY=your_stripe_secret_key
+- ATLAS_URI=your_atlas_uri
+- CLOUDINARY_URL=your_cloudinary_url
 
 5. **Run the application**:
    In development mode: npm run nodemon
