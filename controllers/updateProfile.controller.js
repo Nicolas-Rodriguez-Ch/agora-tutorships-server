@@ -57,18 +57,24 @@ const updateProfileImage = async (req, res, next) => {
       return;
     }
         
-    cloudinary.uploader.upload(req.file.path, (error, result) => {
+    cloudinary.uploader.upload(req.file.path, async (error, result) => {
       if (error) {
         return next();
       }
       const url = result.url;
+      const { token, type } = req.body;
+      const userSchema = type === "student" ? Student : Tutor;
+      const { userData } = jwt.verify(token, "secret key");
+      await userSchema.updateOne({ _id: userData._id }, { profile_photo: url });
+
       res.status(200).send(url);
     });
+    
   } catch (error) {    
-    console.log("🚀 ~ file: updateProfile.controller.js:68 ~ updateProfileImage ~ error:", error);
     res.status(500).send(null);
   }
 };
+
 
 
 module.exports = { updateProfile, updateProfileImage };
